@@ -1,3 +1,7 @@
+import 'package:encommentt/pages/add.dart';
+import 'package:encommentt/pages/explore.dart';
+import 'package:encommentt/pages/settings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -10,6 +14,9 @@ class MainActivity extends StatefulWidget {
 
 class _MainActivityState extends State<MainActivity> {
   bool isAuth = false;
+  late PageController pageController;
+  int pageIndex = 0;
+
   handleSignIn(GoogleSignInAccount account) {
     if (account != null) {
       print(account);
@@ -30,6 +37,7 @@ class _MainActivityState extends State<MainActivity> {
   @override
   void initState() {
     super.initState();
+    pageController = PageController();
     googleSignIn.onCurrentUserChanged.listen((account) {
       handleSignIn(account!);
     }, onError: (err) {
@@ -41,6 +49,26 @@ class _MainActivityState extends State<MainActivity> {
     }).catchError((err) {
       print('Error signing in: $err');
     });
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
+  onPageChanged(int pageIndex) {
+    setState(() {
+      this.pageIndex = pageIndex;
+    });
+  }
+
+  onTap(int pageIndex) {
+    pageController.animateToPage(
+      pageIndex,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   Scaffold signedOutUser() {
@@ -87,7 +115,32 @@ class _MainActivityState extends State<MainActivity> {
   }
 
   Scaffold signedInUser() {
-    return Scaffold(body: Text("Hello"));
+    return Scaffold(
+      body: PageView(
+        children: <Widget>[
+          Explore(),
+          Add(),
+          Settings(),
+        ],
+        controller: pageController,
+        onPageChanged: onPageChanged,
+        physics: NeverScrollableScrollPhysics(),
+      ),
+      bottomNavigationBar: CupertinoTabBar(
+          currentIndex: pageIndex,
+          onTap: onTap,
+          activeColor: Theme.of(context).primaryColor,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.explore)),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.add,
+                size: 35.0,
+              ),
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.settings)),
+          ]),
+    );
   }
 
   @override
