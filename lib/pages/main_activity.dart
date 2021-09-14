@@ -3,12 +3,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
-class SplashScreen extends StatefulWidget {
+class MainActivity extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _MainActivityState createState() => _MainActivityState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _MainActivityState extends State<MainActivity> {
   bool isAuth = false;
   handleSignIn(GoogleSignInAccount account) {
     if (account != null) {
@@ -87,35 +87,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Scaffold signedInUser() {
-    return Scaffold(
-        body: Container(
-            width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.all(15),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset("assets/images/logo.png"),
-                Text(
-                  "enCommentt",
-                  style: TextStyle(
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.w600,
-                      fontSize: 30),
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Comment on Youtube videos with disabled comments on the Internet",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontFamily: "Poppins"),
-                    )),
-                Container(
-                    padding: EdgeInsets.only(top: 60),
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation(Color(0xffbe0000)),
-                    ))
-              ],
-            )));
+    return Scaffold(body: Text("Hello"));
   }
 
   @override
