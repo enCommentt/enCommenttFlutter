@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Container(
                     alignment: Alignment.center,
                     child: Text(
-                      "Comment on Youtube videos with disabled comments on the Internet",
+                      "Comment on YouTube videos with disabled comments on the Internet",
                       textAlign: TextAlign.center,
                       style: TextStyle(fontFamily: "Poppins"),
                     )),
