@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405847574047",
+    "firebase_url": "https://encommentt-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "encommentt",
+    "storage_bucket": "encommentt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405847574047:android:a1f4de8fdc103ce415b72a",
+        "android_client_info": {
+          "package_name": "com.encommentt.encommentt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405847574047-llspap2qru3fpuqk1tm1o88vdiv84lcf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBst3fR6FjVqh5QZjnS_ELxdiLLh7SL5Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405847574047-llspap2qru3fpuqk1tm1o88vdiv84lcf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "405847574047-uasmhjmk54evusce8c7nfdumodolbq3n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.encommentt.encommentt"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
