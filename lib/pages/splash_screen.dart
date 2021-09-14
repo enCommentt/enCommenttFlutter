@@ -12,6 +12,7 @@ class _SplashScreenState extends State<SplashScreen> {
   bool isAuth = false;
   handleSignIn(GoogleSignInAccount account) {
     if (account != null) {
+      print(account);
       setState(() {
         isAuth = true;
       });
