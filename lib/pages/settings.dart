@@ -36,6 +36,7 @@ class _SettingsState extends State<Settings> {
               Text(
                 googleSignIn.currentUser!.displayName.toString(),
               ),
+              Spacer(),
               logout(context)
             ],
           )
