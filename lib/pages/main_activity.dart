@@ -131,14 +131,16 @@ class _MainActivityState extends State<MainActivity> {
           onTap: onTap,
           activeColor: Theme.of(context).primaryColor,
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.explore)),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add,
-                size: 35.0,
-              ),
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.settings)),
+                icon: Icon(Icons.explore), label: "Explore"),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.add,
+                  size: 35.0,
+                ),
+                label: "Add"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Settings"),
           ]),
     );
   }

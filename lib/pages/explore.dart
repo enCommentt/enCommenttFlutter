@@ -1,3 +1,4 @@
+import 'package:encommentt/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class Explore extends StatefulWidget {
@@ -9,7 +10,7 @@ class _ExploreState extends State<Explore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Explore"),
+      body: SafeArea(child: Text("Explore")),
     );
   }
 }

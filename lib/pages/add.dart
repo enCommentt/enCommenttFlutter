@@ -9,7 +9,7 @@ class _AddState extends State<Add> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Add"),
+      body: SafeArea(child: Text("Add")),
     );
   }
 }
