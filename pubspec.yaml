@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   google_sign_in: ^5.1.0
+  cloud_firestore: ^2.5.2
 
 dev_dependencies:
   flutter_test:
@@ -36,9 +37,4 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins/Poppins-Bold.ttf
           weight: 700
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
 

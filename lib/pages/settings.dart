@@ -1,9 +1,9 @@
 import 'package:encommentt/pages/main_activity.dart';
 import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
+class AppSettings extends StatefulWidget {
   @override
-  _SettingsState createState() => _SettingsState();
+  _AppSettingsState createState() => _AppSettingsState();
 }
 
 ElevatedButton logout(context) {
@@ -17,7 +17,7 @@ ElevatedButton logout(context) {
   );
 }
 
-class _SettingsState extends State<Settings> {
+class _AppSettingsState extends State<AppSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
