@@ -14,7 +14,7 @@ class _WriteCommentState extends State<WriteComment> {
     initialVideoId: videoId,
     flags: YoutubePlayerFlags(
       autoPlay: true,
-      mute: true,
+      mute: false,
     ),
   );
 
