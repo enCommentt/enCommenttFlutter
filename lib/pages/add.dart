@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:encommentt/pages/write_comment.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 final TextEditingController _linkController = TextEditingController();
 
 late Map<String, dynamic> ytDetails;
 late String link;
 bool validYt = false;
+String videoId = "Hello";
 
 class Add extends StatefulWidget {
   @override
@@ -82,7 +85,13 @@ class _AddState extends State<Add> {
                           Spacer(),
                           validYt
                               ? ElevatedButton(
-                                  onPressed: () {}, child: Text("Next"))
+                                  onPressed: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                WriteComment(videoId)));
+                                  },
+                                  child: Text("Next"))
                               : Container(
                                   child: null,
                                 )
@@ -119,6 +128,20 @@ class _AddState extends State<Add> {
       setState(() {
         validYt = false;
       });
+    }
+    try {
+      setState(() {
+        videoId = YoutubePlayer.convertUrlToId(link)!;
+      });
+      print('this is ' + videoId);
+    } on Exception catch (exception) {
+      // only executed if error is of type Exception
+      print('exception');
+    } catch (error) {
+      // executed for errors of all types other than Exception
+      print('catch error');
+      //  videoIdd="error";
+
     }
   }
 }
