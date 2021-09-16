@@ -17,60 +17,80 @@ class Add extends StatefulWidget {
 class _AddState extends State<Add> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
+    return GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: Scaffold(
+          body: SafeArea(
+              child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width - 40,
-                        child: TextField(
-                          controller: _linkController,
-                          decoration: const InputDecoration(
-                              labelText: "Link", border: OutlineInputBorder()),
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        child: ElevatedButton(
-                          child: Text("Validate"),
-                          onPressed: validateUrl,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      validYt ? Text("Valid link") : Text("Inalid link")
-                    ],
-                  ),
-                  Row(children: [
-                    validYt
-                        ? Container(
-                            child: Column(children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width - 200,
-                                child:
-                                    Image.network(ytDetails['thumbnail_url']),
-                              ),
-                              Text(ytDetails['title']),
-                              Text(ytDetails['author_name'])
-                            ]),
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width - 40,
+                            child: TextField(
+                              controller: _linkController,
+                              decoration: const InputDecoration(
+                                  labelText: "Link",
+                                  border: OutlineInputBorder()),
+                            ),
                           )
-                        : Container(
-                            child: null,
-                          ),
-                  ])
-                ],
-              ))),
-    );
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Spacer(),
+                          Container(
+                            child: ElevatedButton(
+                              child: Text("Validate"),
+                              onPressed: validateUrl,
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Spacer(),
+                          validYt ? Text("Valid link") : Text("Inalid link"),
+                          Spacer(),
+                        ],
+                      ),
+                      Row(children: [
+                        validYt
+                            ? Container(
+                                child: Column(children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.of(context).size.width - 200,
+                                    child: Image.network(
+                                        ytDetails['thumbnail_url']),
+                                  ),
+                                  Text(ytDetails['title']),
+                                  Text(ytDetails['author_name'])
+                                ]),
+                              )
+                            : Container(
+                                child: null,
+                              ),
+                      ]),
+                      Row(
+                        children: [
+                          Spacer(),
+                          validYt
+                              ? ElevatedButton(
+                                  onPressed: () {}, child: Text("Next"))
+                              : Container(
+                                  child: null,
+                                )
+                        ],
+                      )
+                    ],
+                  ))),
+        ));
   }
 
   Future<dynamic> validateUrl() async {
