@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:encommentt/model/user.dart';
 import 'package:encommentt/pages/add.dart';
 import 'package:encommentt/pages/explore.dart';
 import 'package:encommentt/pages/settings.dart';
@@ -8,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
-final usersRef = FirebaseFirestore.instance.collection('users');
 final DateTime timestamp = DateTime.now();
-User? currentUser;
 
 class MainActivity extends StatefulWidget {
   @override
@@ -25,7 +21,6 @@ class _MainActivityState extends State<MainActivity> {
 
   handleSignIn(GoogleSignInAccount account) {
     if (account != null) {
-      createUserInFirestore();
       setState(() {
         isAuth = true;
       });
@@ -82,23 +77,6 @@ class _MainActivityState extends State<MainActivity> {
       duration: Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
-  }
-
-  createUserInFirestore() async {
-    final GoogleSignInAccount? user = googleSignIn.currentUser;
-    DocumentSnapshot doc = await usersRef.doc(user!.id).get();
-    if (!doc.exists) {
-      usersRef.doc(user.id).set({
-        "id": user.id,
-        "photoUrl": user.photoUrl,
-        "email": user.email,
-        "displayName": user.displayName,
-        "timestamp": timestamp
-      });
-      doc = await usersRef.doc(user.id).get();
-    }
-    currentUser = User.fromDocument(doc);
-    print(currentUser);
   }
 
   Scaffold signedOutUser() {
@@ -187,14 +165,10 @@ class _MainActivityState extends State<MainActivity> {
 
   @override
   Widget build(BuildContext context) {
-    if (loading == false) {
-      return loadingUserScreen();
-    } else if (isAuth == true && loading == false) {
+    if (isAuth == true) {
       return signedInUser();
-    } else if (isAuth == false && loading == false) {
-      return signedOutUser();
     } else {
-      return loadingUserScreen();
+      return signedOutUser();
     }
   }
 }
