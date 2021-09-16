@@ -63,6 +63,7 @@ class _AddState extends State<Add> {
                         ],
                       ),
                       Row(children: [
+                        Spacer(),
                         validYt
                             ? Container(
                                 child: Column(children: [
@@ -79,6 +80,7 @@ class _AddState extends State<Add> {
                             : Container(
                                 child: null,
                               ),
+                        Spacer()
                       ]),
                       Row(
                         children: [
@@ -136,7 +138,7 @@ class _AddState extends State<Add> {
       print('this is ' + videoId);
     } on Exception catch (exception) {
       // only executed if error is of type Exception
-      print('exception');
+      print('exception: $exception');
     } catch (error) {
       // executed for errors of all types other than Exception
       print('catch error');
