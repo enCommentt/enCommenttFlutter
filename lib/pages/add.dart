@@ -37,7 +37,7 @@ class _AddState extends State<Add> {
                             width: MediaQuery.of(context).size.width - 40,
                             child: TextField(
                               controller: _linkController,
-                              decoration: const InputDecoration(
+                              decoration: InputDecoration(
                                   labelText: "Link",
                                   border: OutlineInputBorder()),
                             ),
